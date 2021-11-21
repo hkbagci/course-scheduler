@@ -14,7 +14,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int studentNumber;
+    private Long studentNumber;
 
     private String name;
     private String surname;
@@ -24,5 +24,5 @@ public class Student {
     private List<Map<Teacher, Integer>> teacherLessonHourList;
 
     @OneToMany(mappedBy = "student")
-    Set<CourseStudent> registrations;
+    Set<CourseStudent> registrationSet;
 }

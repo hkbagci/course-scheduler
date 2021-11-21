@@ -1,5 +1,6 @@
 package tr.com.hkerembagci.coursescheduler.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -9,7 +10,7 @@ public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String name;
     private String surname;
@@ -19,5 +20,6 @@ public class Teacher {
     private LessonType lessonType;
 
     @OneToOne(mappedBy = "teacher")
+    @JsonIgnore
     private Course course;
 }

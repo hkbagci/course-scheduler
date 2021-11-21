@@ -1,13 +1,13 @@
 INSERT INTO `DAY` (`id`, `day_name`) VALUES (1, 'Cumartesi');
 INSERT INTO `DAY` (`id`, `day_name`) VALUES (2, 'Pazar');
 
-INSERT INTO `HOUR` (`id`, `hour`) VALUES (8, 8);
-INSERT INTO `HOUR` (`id`, `hour`) VALUES (9, 9);
-INSERT INTO `HOUR` (`id`, `hour`) VALUES (10, 10);
-INSERT INTO `HOUR` (`id`, `hour`) VALUES (11, 11);
-INSERT INTO `HOUR` (`id`, `hour`) VALUES (13, 13);
-INSERT INTO `HOUR` (`id`, `hour`) VALUES (14, 14);
-INSERT INTO `HOUR` (`id`, `hour`) VALUES (15, 15);
+INSERT INTO `HOUR` (`id`, `startHour`, `endHour`) VALUES (8, 8, 9);
+INSERT INTO `HOUR` (`id`, `startHour`, `endHour`) VALUES (9, 9, 10);
+INSERT INTO `HOUR` (`id`, `startHour`, `endHour`) VALUES (10, 10, 11);
+INSERT INTO `HOUR` (`id`, `startHour`, `endHour`) VALUES (11, 11, 12);
+INSERT INTO `HOUR` (`id`, `startHour`, `endHour`) VALUES (13, 13, 14);
+INSERT INTO `HOUR` (`id`, `startHour`, `endHour`) VALUES (14, 14, 15);
+INSERT INTO `HOUR` (`id`, `startHour`, `endHour`) VALUES (15, 15, 16);
 
 INSERT INTO `LESSON_TYPE` (`id`, `lesson_name`) VALUES (1, 'Türkçe');
 INSERT INTO `LESSON_TYPE` (`id`, `lesson_name`) VALUES (2, 'Matematik');
