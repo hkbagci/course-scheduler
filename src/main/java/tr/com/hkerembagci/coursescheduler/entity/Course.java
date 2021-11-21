@@ -3,10 +3,13 @@ package tr.com.hkerembagci.coursescheduler.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
-public class Schedule {
+public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +27,7 @@ public class Schedule {
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "student_id", referencedColumnName = "student_number")
-    private Student student;
+    @OneToMany(mappedBy = "course")
+    Set<CourseStudent> registrations;
+
 }

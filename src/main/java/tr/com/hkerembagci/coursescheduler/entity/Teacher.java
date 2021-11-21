@@ -19,5 +19,5 @@ public class Teacher {
     private LessonType lessonType;
 
     @OneToOne(mappedBy = "teacher")
-    private Schedule schedule;
+    private Course course;
 }

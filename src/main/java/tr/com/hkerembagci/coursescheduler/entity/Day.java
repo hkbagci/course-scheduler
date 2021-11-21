@@ -14,5 +14,5 @@ public class Day {
     private String dayName;
 
     @OneToOne(mappedBy = "day")
-    private Schedule schedule;
+    private Course course;
 }

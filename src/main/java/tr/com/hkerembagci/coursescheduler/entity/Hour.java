@@ -14,5 +14,5 @@ public class Hour {
     private int hour;
 
     @OneToOne(mappedBy = "hour")
-    private Schedule schedule;
+    private Course course;
 }
