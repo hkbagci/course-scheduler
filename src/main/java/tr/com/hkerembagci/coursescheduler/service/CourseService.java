@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import tr.com.hkerembagci.coursescheduler.entity.Course;
+import tr.com.hkerembagci.coursescheduler.entity.CourseStudent;
 import tr.com.hkerembagci.coursescheduler.entity.Day;
+import tr.com.hkerembagci.coursescheduler.entity.Student;
 import tr.com.hkerembagci.coursescheduler.exception.CourseSchedulerException;
 import tr.com.hkerembagci.coursescheduler.repository.CourseRepository;
 
@@ -38,6 +40,10 @@ public class CourseService {
     }
 
     public Course save(Course course) throws CourseSchedulerException {
+        final List<Course> courseList = findByDayAndHour(Math.toIntExact(course.getDay().getId()), Math.toIntExact(course.getHour().getId()));
+        if (!courseList.isEmpty()) {
+            throw new CourseSchedulerException("Aynı gün ve saat başka bir kurs bulunmaktadır. Lütfen başka bir gün ve/veya saat seçiniz.");
+        }
         return courseRepository.save(course);
     }
 }

@@ -3,6 +3,7 @@ package tr.com.hkerembagci.coursescheduler.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,11 +16,11 @@ public class Teacher {
     private String name;
     private String surname;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "lesson_type_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "lesson_type_id")
     private LessonType lessonType;
 
-    @OneToOne(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher")
     @JsonIgnore
-    private Course course;
+    private List<Course> courseList;
 }

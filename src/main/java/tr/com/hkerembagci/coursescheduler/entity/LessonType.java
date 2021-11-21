@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,8 +15,8 @@ public class LessonType {
     private Long id;
     private String lessonName;
 
-    @OneToOne(mappedBy = "lessonType")
+    @OneToMany(mappedBy = "lessonType")
     @JsonIgnore
-    private Teacher teacher;
+    private List<Teacher> teacherList;
 
 }

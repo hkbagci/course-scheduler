@@ -20,9 +20,9 @@ public class Student {
     private String surname;
     private String address;
 
-    @Transient
-    private List<Map<Teacher, Integer>> teacherLessonHourList;
-
     @OneToMany(mappedBy = "student")
     Set<CourseStudent> registrationSet;
+
+    @Transient
+    private List<Map<Teacher, Integer>> teacherLessonHourList;
 }

@@ -1,13 +1,13 @@
 package tr.com.hkerembagci.coursescheduler.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import tr.com.hkerembagci.coursescheduler.entity.Course;
 import tr.com.hkerembagci.coursescheduler.entity.CourseStudent;
 import tr.com.hkerembagci.coursescheduler.entity.Day;
+import tr.com.hkerembagci.coursescheduler.entity.Student;
+import tr.com.hkerembagci.coursescheduler.exception.CourseSchedulerException;
 import tr.com.hkerembagci.coursescheduler.service.CourseService;
 import tr.com.hkerembagci.coursescheduler.service.CourseStudentService;
 
@@ -34,4 +34,17 @@ public class CourseStudentController {
     public List<CourseStudent> getCourseStudentList() {
         return courseStudentService.findCourseStudentList();
     }
+
+    @PostMapping("/registerCourse")
+    public ResponseEntity<String> addCourse(
+            @RequestParam(required = true) Course course,
+            @RequestParam(required = true) Student student) {
+        try {
+            courseStudentService.chooseCourse(course, student);
+        } catch (CourseSchedulerException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+        return ResponseEntity.ok("Derse başarıyla kaydolundu.");
+    }
+
 }

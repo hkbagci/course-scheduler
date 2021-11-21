@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import tr.com.hkerembagci.coursescheduler.entity.Course;
 import tr.com.hkerembagci.coursescheduler.entity.CourseStudent;
 import tr.com.hkerembagci.coursescheduler.entity.Day;
+import tr.com.hkerembagci.coursescheduler.entity.Student;
+import tr.com.hkerembagci.coursescheduler.exception.CourseSchedulerException;
 import tr.com.hkerembagci.coursescheduler.repository.CourseRepository;
 import tr.com.hkerembagci.coursescheduler.repository.CourseStudentRepository;
 
@@ -30,5 +32,12 @@ public class CourseStudentService {
 
     public CourseStudent save(CourseStudent courseStudent) {
         return courseStudentRepository.save(courseStudent);
+    }
+
+    public void chooseCourse(Course course, Student student) throws CourseSchedulerException {
+        CourseStudent courseStudent = new CourseStudent();
+        courseStudent.setCourse(course);
+        courseStudent.setStudent(student);
+        courseStudentRepository.save(courseStudent);
     }
 }

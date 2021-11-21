@@ -16,16 +16,16 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "day_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "day_id")
     private Day day;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "hour_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "hour_id")
     private Hour hour;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "teacher_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     @OneToMany(mappedBy = "course")
